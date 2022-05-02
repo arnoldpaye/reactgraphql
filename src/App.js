@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-import github from './db.js';
+import { useEffect } from "react";
+import github from "./db.js";
 
 function App() {
-
   useEffect(() => {
     const githubQuery = {
       query: `
@@ -11,21 +10,21 @@ function App() {
           name
         }
       }
-      `
+      `,
     };
 
     fetch(github.baseURL, {
-      method: 'POST',
+      method: "POST",
       headers: github.headers,
-      body: JSON.stringify(githubQuery)
+      body: JSON.stringify(githubQuery),
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
 
   return (
