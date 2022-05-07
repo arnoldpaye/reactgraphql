@@ -3,6 +3,7 @@ import github from "./db.js";
 import query from "./Query";
 import RepoInfo from "./RepoInfo";
 import SearchBox from "./SearchBox.js";
+import NavButtons from "./NavButtons.js";
 
 function App() {
   let [userName, setUserName] = useState("");
@@ -81,6 +82,17 @@ function App() {
           ))}
         </ul>
       )}
+
+      <NavButtons
+        start={startCursor}
+        end={endCursor}
+        next={hasNextPage}
+        previous={hasPreviousPage}
+        onPage={(myKeyword, myString) => {
+          setPaginationKeyword(myKeyword);
+          setPaginationString(myString);
+        }}
+      />
     </div>
   );
 }
